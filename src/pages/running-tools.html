@@ -1,0 +1,59 @@
+<main class="running-tools-app" aria-label="Running tools">
+    <header class="tools-header">
+        <h2>Running tools</h2>
+        <button class="install-link" id="install-app" type="button" hidden>install</button>
+    </header>
+
+    <nav class="tools-nav" aria-label="Tool selection" role="tablist">
+        <button class="tool-tab active" id="pace-tab" type="button" role="tab" aria-controls="pace-panel" aria-selected="true" data-tool="pace">pace</button>
+        <button class="tool-tab" id="performance-tab" type="button" role="tab" aria-controls="performance-panel" aria-selected="false" data-tool="performance">performance</button>
+    </nav>
+
+    <section class="tool-panel" id="pace-panel" role="tabpanel" aria-labelledby="pace-tab">
+        <div class="field-line">
+            <label for="pace-seconds">pace</label>
+            <output id="pace-value">3:10 min/km</output>
+        </div>
+        <input id="pace-seconds" type="range" min="140" max="420" step="1" value="190" aria-describedby="pace-value">
+        <div class="range-limits"><span>2:20</span><span>7:00</span></div>
+        <p class="secondary-result"><span id="mile-pace">5:06 min/mi</span><span aria-hidden="true"> · </span><span id="speed-result">18.9 km/h</span></p>
+        <div class="field-line finish-field">
+            <label for="finish-distance">distance</label>
+            <input class="finish-input" id="finish-distance" type="number" min="1" step="1" value="5000" inputmode="numeric" aria-describedby="finish-time">
+        </div>
+        <div class="field-line finish-time">
+            <label for="finish-time">finish time</label>
+            <input class="finish-input" id="finish-time" type="text" value="15:50" inputmode="numeric" aria-label="finish time">
+        </div>
+        <p class="tool-note" id="pace-note">lap times by distance</p>
+        <table class="pace-results" aria-label="Equivalent lap times">
+            <tbody id="pace-results"></tbody>
+        </table>
+    </section>
+
+    <section class="tool-panel" id="performance-panel" role="tabpanel" aria-labelledby="performance-tab" hidden>
+        <div class="field-line">
+            <label for="vo2max">vo₂max</label>
+            <output id="vo2max-value">62</output>
+        </div>
+        <input id="vo2max" type="range" min="35" max="80" step="0.5" value="62" aria-describedby="vo2max-value">
+        <div class="range-limits"><span>35</span><span>80</span></div>
+
+        <div class="field-line threshold-field">
+            <label for="threshold">lactate threshold pace</label>
+            <output id="threshold-value">3:35 min/km</output>
+        </div>
+        <input id="threshold" type="range" min="150" max="390" step="1" value="215" aria-describedby="threshold-value">
+        <div class="range-limits"><span>2:30</span><span>6:30</span></div>
+
+        <fieldset class="profile-field">
+            <legend>runner strength</legend>
+            <input id="runner-strength" type="range" min="0" max="6" step="1" value="3" aria-describedby="runner-strength-value">
+            <div class="range-limits strength-labels"><span>speed</span><output id="runner-strength-value">neutral</output><span>endurance</span></div>
+        </fieldset>
+
+        <table class="performance-results" aria-label="Estimated race performances">
+            <tbody id="performance-results"></tbody>
+        </table>
+    </section>
+</main>

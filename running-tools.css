@@ -1,0 +1,281 @@
+.running-tools-app {
+    max-width: 34rem;
+    margin: 0 auto;
+    min-height: 36rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.tools-header,
+.tools-nav,
+.field-line,
+.result-line,
+.range-limits {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.tools-header {
+    margin-bottom: 1.5rem;
+}
+
+.tools-header h2 {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 400;
+}
+
+.install-link,
+.tool-tab {
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: var(--normal-text);
+    cursor: pointer;
+    font: inherit;
+    padding: 0;
+}
+
+.install-link:hover,
+.tool-tab:hover {
+    color: var(--text-color);
+}
+
+.tools-nav {
+    justify-content: flex-start;
+    gap: 1.5rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--normal-text) 22%, transparent);
+    margin-bottom: 1.75rem;
+}
+
+.tool-tab {
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid transparent;
+}
+
+.tool-tab.active {
+    border-color: var(--text-color);
+    color: var(--text-color);
+}
+
+.tool-panel {
+    min-height: 30rem;
+}
+
+.field-line {
+    min-height: 2.2rem;
+    gap: 1rem;
+    color: var(--normal-text);
+}
+
+.field-line label,
+.field-line output,
+.result-line span,
+.result-line strong,
+.range-limits,
+.tool-note,
+.pace-results,
+.performance-results,
+.secondary-result,
+.profile-field {
+    font-size: 1rem;
+}
+
+.field-line output,
+.result-line strong {
+    color: var(--text-color);
+    font-weight: 400;
+}
+
+input[type="range"] {
+    appearance: none;
+    width: 100%;
+    height: 1rem;
+    margin: 0.15rem 0 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    height: 1px;
+    background: var(--text-color);
+}
+
+input[type="range"]::-moz-range-track {
+    height: 1px;
+    background: var(--text-color);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    width: 0.9rem;
+    height: 0.9rem;
+    margin-top: -0.42rem;
+    border: 0;
+    border-radius: 50%;
+    background: var(--text-color);
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 0.9rem;
+    height: 0.9rem;
+    border: 0;
+    border-radius: 50%;
+    background: var(--text-color);
+}
+
+.range-limits {
+    color: var(--normal-text);
+    font-size: 0.8rem;
+    margin-top: -0.15rem;
+}
+
+.tool-note {
+    color: var(--normal-text);
+    margin: 1.5rem 0 0.5rem;
+}
+
+.pace-results,
+.performance-results {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.pace-results td,
+.performance-results td {
+    border-bottom: 1px solid color-mix(in srgb, var(--normal-text) 22%, transparent);
+    padding: 0.55rem 0;
+}
+
+.pace-results td:first-child,
+.performance-results td:first-child {
+    color: var(--normal-text);
+}
+
+.pace-results td:last-child,
+.performance-results td:last-child {
+    color: var(--text-color);
+    text-align: right;
+}
+
+.secondary-result {
+    color: var(--normal-text);
+    display: flex;
+    font-size: 0.85rem;
+    justify-content: flex-end;
+    margin-top: 0.9rem;
+}
+
+.finish-field {
+    margin-top: 1.8rem;
+}
+
+.finish-time {
+    border-bottom: 1px solid color-mix(in srgb, var(--normal-text) 22%, transparent);
+}
+
+.finish-time .finish-input {
+    border-bottom: 0;
+}
+
+.finish-input {
+    width: 7rem;
+    border: 0;
+    border-bottom: 1px solid var(--text-color);
+    border-radius: 0;
+    background: transparent;
+    color: var(--text-color);
+    font: inherit;
+    padding: 0 0 0.15rem;
+    text-align: right;
+}
+
+.finish-input:focus {
+    outline: 0;
+}
+
+.threshold-field {
+    margin-top: 2rem;
+}
+
+.profile-field {
+    border: 0;
+    margin: 2rem 0 1.5rem;
+    padding: 0;
+    color: var(--normal-text);
+}
+
+.profile-field legend {
+    padding: 0;
+}
+
+.strength-labels {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: baseline;
+}
+
+.strength-labels output {
+    color: var(--text-color);
+    text-align: center;
+}
+
+.strength-labels span:last-child {
+    text-align: right;
+}
+
+.lap-time-input,
+.prediction-input {
+    border: 0;
+    border-bottom: 1px solid transparent;
+    border-radius: 0;
+    background: transparent;
+    color: var(--text-color);
+    font: inherit;
+    padding: 0;
+    text-align: right;
+    width: 5.5rem;
+}
+
+.lap-time-input:focus,
+.prediction-input:focus {
+    border-bottom-color: var(--text-color);
+    outline: 0;
+}
+
+@media (max-width: 767px) {
+    .running-tools-body {
+        margin: 0;
+        padding: 0;
+    }
+
+    .running-tools-body .header-container,
+    .running-tools-body .footer,
+    .running-tools-body .h1-title {
+        display: none;
+    }
+
+    .running-tools-body .body-wrapper,
+    .running-tools-body .main-content {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+
+    .running-tools-app {
+        box-sizing: border-box;
+        min-height: 100svh;
+        padding: max(1.2rem, env(safe-area-inset-top)) 1rem max(1.2rem, env(safe-area-inset-bottom));
+    }
+
+    .tool-panel {
+        flex: 1;
+    }
+}
+
+@media (min-width: 768px) {
+    .running-tools-body .main-content {
+        padding-top: 0;
+    }
+}

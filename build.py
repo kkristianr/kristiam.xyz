@@ -61,6 +61,26 @@ PAGES = [
         "src": "running.html",
     },
     {
+        "key": "running-tools",
+        "path": "/running-tools",
+        "outfile": "running-tools.html",
+        "title": "Running tools",
+        "description": "Minimal running pace, lap, and performance planning tools.",
+        "h1": "Running tools",
+        "active": "/running",
+        "src": "running-tools.html",
+        "extra_head": (
+            '    <link rel="stylesheet" href="/running-tools.css">\n'
+            '    <link rel="manifest" href="/running-tools.webmanifest">\n'
+            '    <meta name="apple-mobile-web-app-capable" content="yes">\n'
+            '    <meta name="apple-mobile-web-app-status-bar-style" content="default">\n'
+            '    <meta name="apple-mobile-web-app-title" content="Running tools">\n'
+            '    <meta name="theme-color" content="#ffffff">'
+        ),
+        "extra_scripts": '    <script src="/running-tools.js"></script>',
+        "body_class": "running-tools-body",
+    },
+    {
         "key": "dev-ai",
         "path": "/dev-ai",
         "outfile": "dev-ai.html",
@@ -386,6 +406,8 @@ def layout(
     active: str | None,
     body: str,
     extra_head: str = "",
+    extra_scripts: str = "",
+    body_class: str = "",
     json_ld: list[dict] | None = None,
     og_type: str = "website",
 ) -> str:
@@ -419,7 +441,7 @@ def layout(
     <meta name="theme-color" content="#1a1a1a">
 {extra_head}
 {script_ld(json_ld or [])}</head>
-<body>
+<body{f' class="{body_class}"' if body_class else ''}>
 {h1_html}    <div class="header-container">
         <p class="site-title">
             <a href="/" style="text-decoration: none; color: inherit;">
@@ -451,6 +473,7 @@ def layout(
     </footer>
 
     <script src="/script.js"></script>
+{extra_scripts}
 </body>
 </html>
 """
@@ -464,10 +487,15 @@ def build_pages(posts: list[dict]) -> list[str]:
     for page in PAGES:
         body = fill_post_markers((SRC_PAGES / page["src"]).read_text(encoding="utf-8"), posts)
         extra_head = ""
+        extra_scripts = ""
+        body_class = ""
         json_ld: list[dict] = []
         if page["key"] == "home":
             extra_head = home_extra_head()
             json_ld = [profile_page_jsonld(), person_jsonld(), website_jsonld()]
+        extra_head = page.get("extra_head", extra_head)
+        extra_scripts = page.get("extra_scripts", extra_scripts)
+        body_class = page.get("body_class", body_class)
         html_out = layout(
             title=page["title"],
             description=page["description"],
@@ -476,6 +504,8 @@ def build_pages(posts: list[dict]) -> list[str]:
             active=page["active"],
             body=body,
             extra_head=extra_head,
+            extra_scripts=extra_scripts,
+            body_class=body_class,
             json_ld=json_ld,
         )
         (ROOT / page["outfile"]).write_text(html_out, encoding="utf-8")
