@@ -1,0 +1,15 @@
+---
+title: "Fight for intellectual property against LLMs"
+categories: ["random"]
+date: "08.05.2026"
+---
+
+In the early days of LLMs, I was HIGHLY critical of the ethics of training large language models on other people's intellectual property, seemingly disregarding licensing and copyright altogether. In fact, just a few years ago, I couldn't comprehend how training models on data owned by other entities was even legal, and how the big providers were not facing any real consequences for it. I guess most of us eventually just accepted it, especially given how powerful these models have become over the last year. However, using real humans' work to train AI seems to become a serious concern only when there's a possibility of their jobs being automated. Take Netflix experimenting with AI for audio synchronization and dubbing, potentially reducing the need for human voice actors.
+
+Over the last few months, I've been using the latest GPT models extensively, and I feel that starting with GPT-5.4, their creativity in problem-solving has improved significantly (or maybe I just hadn't needed that level of creativity before). One example was when I prompted GPT-5.5 (reasoning xhigh) in Codex to come up with an algorithm for measuring elevation along routes. This is an underdetermined measurement problem due to different methods of interpreting terrain and climbs, as well as hardware inconsistencies. At work, this has the potential to substantially optimize our workflows, since we'd previously been relying on external DEMs (Digital Elevation Models) for the same task. Of course, I provided a dataset with ground-truth values outputted from other DEMs to learn from and/or evaluate against, and it delivered a solid working algorithm with an acceptable level of error.
+
+Similarly, a colleague and I tried solving an even bigger, and supposedly more demanding, problem: determining the terrain/surface type from coordinates along a route. This time we used Claude with very high reasoning (I don't remember the exact model or effort setting), and again, it delivered a solid prototype using open-source libraries we weren't even aware of. Basically, we solved two use cases that we'd been postponing for months because of our initial estimates of their complexity and the resources required to solve them. The input was essentially a prompt, and the output was a working prototype backed by actual, consistent business logic, already integrated into our codebase.
+
+For the first time after years of AI-assisted coding, I felt like I was stealing innovative ideas, aka intellectual property, from these sophisticated models. Usually, I use these models for coding, writing, and brainstorming based on existing directions. But when I ask a model to solve a complex problem that requires mostly creativity rather than execution, it somehow feels unethical.
+
+The good thing is that my feeling is simply wrong, because none of this would have been possible if LLMs hadn't been stealing the intellectual property of other smart minds in the first place. Humans 1 - LLMs 1. Palla al centro?

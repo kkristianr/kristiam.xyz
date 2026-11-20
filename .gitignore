@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Local/staging markers and generated site output
+.devstage
+/*.html
+/*/
+!/favicon/
+!/materials/
+!/posts/
+!/src/
+!/src/pages/
+!/src/partials/
+!/favicon/**
+!/materials/**
+!/posts/**
+!/src/**
+!/index.css
+!/script.js
+!/build.py
+!/google25db54d7ba527ebf.html
+!/requirements.txt
+
+# Build-generated files
+/md/
+/sitemap.xml
+/robots.txt
+/llms.txt
+/dev-ai/
+/running/
+/random/
