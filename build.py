@@ -74,8 +74,7 @@ PAGES = [
             '    <link rel="manifest" href="/running-tools.webmanifest">\n'
             '    <meta name="apple-mobile-web-app-capable" content="yes">\n'
             '    <meta name="apple-mobile-web-app-status-bar-style" content="default">\n'
-            '    <meta name="apple-mobile-web-app-title" content="Running tools">\n'
-            '    <meta name="theme-color" content="#ffffff">'
+            '    <meta name="apple-mobile-web-app-title" content="Running tools">'
         ),
         "extra_scripts": '    <script src="/running-tools.js"></script>',
         "body_class": "running-tools-body",
@@ -442,20 +441,22 @@ def layout(
 {extra_head}
 {script_ld(json_ld or [])}</head>
 <body{f' class="{body_class}"' if body_class else ''}>
-{h1_html}    <div class="header-container">
+{h1_html}    <header class="header-container">
         <p class="site-title">
-            <a href="/" style="text-decoration: none; color: inherit;">
+            <a href="/">
                 {LOGO}
-                <span id="mainTitle">kristiam.xyz</span><span class="cursor">|</span>
+                <span>kristiam.xyz</span>
             </a>
         </p>
-        <div>
+        <nav class="site-nav" aria-label="Primary navigation">
             {menu_html(active)}
-            <svg class="theme-toggle" id="theme-toggle" width="16" height="16" viewBox="0 0 16 16" role="button" aria-label="Toggle theme">
-                <circle cx="8" cy="8" r="7" fill="currentColor"/>
-            </svg>
-        </div>
-    </div>
+            <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle colour theme" aria-pressed="true">
+                <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+                    <circle cx="8" cy="8" r="7" fill="currentColor"/>
+                </svg>
+            </button>
+        </nav>
+    </header>
 
     <div class="body-wrapper">
         <div class="main-content">
@@ -518,15 +519,14 @@ def build_articles(posts: list[dict]) -> list[str]:
     urls = []
     for post in posts:
         parent = article_parent(post)
-        content_class = " article-running" if "running" in post["categories"] else ""
-        body = f"""            <a href="{parent}" class="back-link">&#8592; back</a>
+        body = f"""            <a href="{parent}">&#8592; back</a>
             <article class="article-header">
                 <h1 class="article-title">{html.escape(post["title"])}</h1>
                 <div class="article-meta">
                     <span class="article-date">{html.escape(format_display_date(post["date"]))}</span>
                 </div>
             </article>
-            <div class="article-content{content_class}">{md_to_html(post["body"])}</div>
+            <div class="article-content">{md_to_html(post["body"])}</div>
 """
         path = post_path(post)
         html_out = layout(
